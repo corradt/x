@@ -1,3 +1,5 @@
+AUTO COMPLETION
+
 if i want use an automatic completion to reduce writing proceed as follow:
 
 create a file with the words that you desire for istance a file named words with the following path /usr/share/dict/words
@@ -30,3 +32,11 @@ put in /etc/vim/vimrc the following strings
 set dictionary=/usr/path/dict/words
 set complete+=k     #if you want to add the completion
 set complete-=k     #if you want to remove the completion
+
+-----------------------------------------------------------------
+ACTIVE MOUSE ON VIM
+edit the file /etc/vim/vimrc by sudo and uncomment the line 
+
+set mouse=a
+--------------------------------------------------------------
+
