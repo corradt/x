@@ -1,0 +1,548 @@
+per installare sublime text in seguenza scrivere le seguenti stringhe
+1a stringa)  wget http://c758482.r82.cf2.rackcdn.com/Sublime\ Text\ 2.0.2\ x64.tar.bz2
+2a stringa)  tar vxjf Sublime\ Text\ 2.0.2\ x64.tar.bz2
+3a stringa)  sudo mv Sublime\ Text\ 2 /opt/
+4a stringa)  sudo ln -s /opt/Sublime\ Text\ 2/sublime_text /usr/bin/sublime
+
+per installare rvm rails e ruby seguire i seguenti steps:
+step 0) sudo apt-get install curl
+step 1) copia incolla sul terminale la seguente stringa:
+        gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+step 2) \curl -sSL https://get.rvm.io | bash -s stable --rails
+step 3) echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> .bashrc
+step 4) per evitare che l'installazione di una gem sia troppo lenta scrivere: 
+        gem: --no-ri --no-rdoc
+step 5) reboot system
+
+0) per controllare se ImageMagick è installato digitare: identify -version
+1)per installare ruby tramite rvm: rvm install 2.2.0 (che sarebbe la versione di ruby che si vuole installare)
+2)per controllare quale versione stiamo usando di ruby scrivere: ruby -v
+
+ 
+3)per installare la documentazione relativa al ruby che stiamo usando, una volta usato il 5) digitare: rvm docs generate all
+
+
+4)per vedere quale ruby versions su rvm ho installato digitare: rvm list
+5)per settare di default una versione di ruby su rvm digitare: rvm --default 2.1.3 per esempio
+6)per cancellare una versione di ruby con rispettivo gemset digitare: rvm remove ruby-2.0.0(dove ruby-2.0.0 è appunto la versione di ruby che si vuole rimuovere)
+7)per controllare quale versione di rails stiamo usando digitare: rails -v
+8)per installare una gem di default su rvm su una speciale versione di ruby usare prima il 4) e 5) e poi digitare: sudo gem install nomeDellaGemCheSiVuoleInstallare
+9) se si vuole creare un sito con il cms refineryCms selezionare ruby-2.2.0 dall'rvm e poi digitare: rails new my_new_application -m http://refinerycms.com/t/edge
+
+You can create scaffolding using:
+           rails generate scaffold MyFoo (or similar),
+           Or
+           rails generate scaffold MyFoo title:string notes:text
+and you can destroy/undo it using 
+           rails destroy scaffold MyFoo
+
+f
+
+
+You can create model using:
+           rails generate model MyFoo (or similar),
+and you can destroy/undo it using 
+           rails destroy model MyFoo
+
+
+
+
+If you want to UNDO  the last migration:
+
+        rake db:rollback
+
+
+ If you need to undo several migrations you can provide a STEP parameter:
+           rake db:rollback STEP=3
+
+
+if you want to reset the db 
+rake db:reset task will drop the database and set it up again. This is functionally equivalent to rake db:drop db:setup.
+------------------------------------------------------------------------------------------------------------------------------
+GITHUB
+
+git add .
+
+git commit -am "inserisci una descrizione "
+
+git status
+
+per traferire il git locale online su github.com e ad esempio da directory del progetto che abbiamo sviluppato si chiama wiki scriveremo:
+
+git remote add origin https://github.com/corradt/wiki.git
+
+git push -u origin master
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+ACTIVE RECORD - MIGRATION 
+
+Model / Class 		Table / Schema
+    	
+Article			articles
+LineItem		line_items
+Deer			deers
+Mouse			mice
+Person			people
+
+quando usiamo 
+rails g scaffold Product title:string description:text
+
+lui automaticamente ci creera' un Model/Class con il nome maiuscolo Product  e allo stesso tempo ci creera' la tabella con il nome minuscolo products
+
+If the migration name is of the form "AddXXXToYYY" or "RemoveXXXFromYYY" and is followed by a list of column names and types then a migration containing the appropriate add_column and remove_column statements will be created. Per esempio:
+
+se vogliamo aggiungere una chiave esterna user_id come attributo/colonna alla classe/tabella  contemporaneamente alla classe e alla tabella dovremmo scrivere
+rails generate migration AddUserIdToProducts user_id:integer
+
+Similarly, you can generate a migration to remove a column from the command line:
+rails generate migration RemoveUserIdFromProducts user_id:integer
+
+e' ovvio che l'attributo/colonna non necessariamente deve essere di tipo integer
+
+ovviamente si potrebbe aggiungere piu' attributi o colonne in una volta sola per esempio:
+
+rails generate migration AddDetailsToProducts part_number:string price:decimal
+
+If the migration name is of the form "CreateXXX" and is followed by a list of column names and types then a migration creating the table XXX with the columns listed will be generated. For example:
+
+rails generate migration CreateProducts name:string part_number:string
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------
+OPERATORE TERNARIO
+
+label= length ==1 ? " argument" : " arguments"
+
+
+la sopra elencata riga dice se length è uguale a 1 assegna la stringa " argument" alla variabile label altrimenti gli assegna la stringa " arguments"
+un'altro esempio definendo una funzione
+
+def pluralize(qta)
+	label= qta==1 ? sprintf("%d", qta) + "  prodotto" : sprintf("%d", qta) + "  prodotti"
+	label
+end
+
+puts pluralize(4) -----> l'output sara' 4 prodotti
+puts pluralize(1) -----> l'output sara' 1 prodotto
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+COMMENTO MULTIRIGA
+
+=begin
+this is a multiple line comment
+=end
+
+ma il migliore metodo e' quello che segue
+
+In application_helper.rb, aggiungere un metodo cosi':
+
+def comment
+end
+
+poi nella file dove si vuole commentare scrivere cosi':
+
+<% comment do %> bla bla bla...<% comment end %>
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+UNTIL simile al ciclo while
+
+age=1 //variabile
+puts age +=1 until age > 28 // stampera' una seq di num a partire dal num 2 fino ad arrivare a 29
+
+// age += 1  significa age=age+1
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+BLOCK
+ un blocco può essere espresso o attraverso le clausole do - end oppure attraverso le parentesi graffe {}. Praticamente  |element| serve a  memorizzare il
+dato appena estratto ad ogni iterazione del costrutto each. 
+
+
+pacific=["washington","Oregon","California"]
+pacific.each do |element|
+   puts element
+end
+
+lo stesso risultato di sopra si ottiene come segue:
+pacific.each {|element| puts element}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Classe
+anzicche' usare attr_reader, attr_writer che servono a settare rispettivamente metodo getter e setter usiamo attr_accessor che lo stesso lavoro di entrambi.
+Di seguito diciamo che vogliamo i metodi getter and setter sia per name che per surname
+
+class Persona
+	@@countPerson=0                    #variabile di classe il cui valore viene condiviso con tutte le variabili di istanza, 
+                                          #in questo caso mi serve per contare quante persone sono state create
+	attr_accessor :name,:surname
+	def initialize()
+		@@countPerson +=1
+	end
+	def totale
+		@@countPerson.to_i
+	end
+
+	def fullName
+		@name.to_s+" "+@surname.to_s          #converto la variabile di istanza name e surname in stringa
+	end
+end 
+
+p1=Persona.new()
+p2=Persona.new()
+
+
+#p1.hello_matz
+p1.name="Corrado"     #qui viene utilizzato il metodo setter
+p1.surname="Tuccitto" #qui viene utilizzato il metodo setter
+
+p2.name="Giuseppe"     #qui viene utilizzato il metodo setter
+p2.surname="Pelligra"   #qui viene utilizzato il metodo setter
+
+persone=[p1,p2]
+
+persone.each {|element| puts element.name+" "+element.surname} # qui vengono usati i metodi getter
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+EREDITA' si ottiene postponendo < alla classe che andra' a ereditare tutte le caratteristiche attributi e metodi della classe madre.
+quando si eredita se la classe da cui si eredita non si trova nel presente file usare require e posizionarla come prima istruzione.
+
+class Studente < Persona
+end 
+
+
+s1=Studente.new()
+s2=Studente.new()
+
+
+#p1.hello_matz
+s1.name="Corrado"
+s1.surname="Tuccitto"
+
+s2.name="Giuseppe"
+s2.surname="Pelligra"
+
+studenti=[s1,s2]
+
+studenti.each {|element| puts element.name+" "+element.surname}
+
+puts s2.totale # 2
+puts s1.fullName  # Corrado Tuccitto
+-------------------------------------------------------------------------------------------------------------------------------------------
+COND	ITIONAL COSTRUTTI
+
+if x == y then puts "x equals y" end
+if x != y: puts "x is not equal to y" end
+if x > y:
+  then puts "x equals y" 
+end
+
+if x !== y then puts "x does not equal y" end
+if !x>y
+  put "x is not greater than y"
+end
+
+ruby="nifty"
+programming="fun"
+x=2
+if ruby == "nifty" && programming =="fun" || x<=2
+   puts "keep programming"
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+UNLESS  e' la forma negata dell'if
+
+unless lang=="de"
+  dog="dog"
+else
+  dog="hund"
+end
+------------------------------------------------------------------------------------------------------------------------------------
+CASE   di seguito vedremo come alla cariabile dog verra' assegnata la parola chien
+
+lang ="fr"
+dog=case lang
+  when "en":"dog"
+  when "es":"perro"
+  when "fr":"chien"
+  when "de":"Hund"
+  else       "dog"
+end
+-------------------------------------------------------------------------------------------------------------------------------
+scale =8    
+case scale
+  when 0: puts "lowest"
+  when 1..3:puts "medium-lo"
+  when 4..5:puts "medium"
+  when 6..7:puts "medium-high"
+  when 8..9:puts "high"
+  when   10:puts "highest"
+  else      puts "off scale"
+end
+
+#la risposta stampata sara' high perche' scale e' incluso nel range di 8 a 9
+--------------------------------------------------------------------------------------------------------------------------------------------
+MODULI E MIXINS
+i moduli sono come le classi ma non possono essere istanziati come una classe. Una classe può includere un modulo, così quando la classe viene istanziata, essa
+possederà i metodi inclusi nel modulo. I metodi inclusi nel modulo una volta importato diventeranno metodi di istanza della classe che include il modulo.
+Mentre si possono includere più moduli, questo e' simile all'ereditarietà multipla, l'ereditarietà della classe e singola cioè non si può ereditare da più classi differenti.
+ il nome di un modulo inizia sempre con una lettera Maiuscola
+
+module Dice
+  def roll
+     r_1=rand(6); r_2=rand(6)
+  end
+end
+
+class Game
+   include Dice
+end
+
+g=Game.new
+g.roll
+
+
+se il modulo Dice e la classe Game fossero in separati file,allora si richiede il file contenente il modulo, questa richiesta la si posizione prima della chiamata
+al modulo Dice
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+REGULAR EXPRESSIONS
+
+se io ho la stringa seguente: 
+stringa="il server è stato aggiornato il 02/25/2015 del mattino"  
+e per esempio voglio estrapolare la data da questa stringa, procedo anzitutto creandomi l'espressione regolare che mi identifica la data 
+
+(?<month>\d{1,2})\/(?<day>\d{1,2})\/(?<year>\d{4})
+e poi tra le / / metto l'espressione regolare che identifica la data
+    
+    /(?<month>\d{1,2})\/(?<day>\d{1,2})\/(?<year>\d{4})/.match(stringa)
+
+
+
+------------------------------------------------------------------------------------------
+CONCATENAZIONE
+per me il miglior metodo di concatenazione se per esempio si vuole concatenare quanto segue 
+		request.fullpath == "/contacts/"+current_user.id
+anzicche' usare il segno +
+ecco come interpolare request.fullpath == "/contacts/#{current_user.id}"
+
+UN ALTRO ESEMPIO
+"http://www.caat.it/it/listino/"+(Time.now).strftime("%Y-%m-%d")
+ anzicche' usare il segno +
+ ecco come interpolare "http://www.caat.it/it/listino/#{(Time.now).strftime("%Y-%m-%d")}"
+--------------------------------------------------------------------------------------------------------------------------------
+HELPERS
+gli helpers sono utili per avere una maggiore pulizia di codice
+per esempio io l'ho utilizzato perchè necessitavo controllare se esisteva una pagina di prezzi aggiornata, se questa non esisteva la funzione doveva cercare l'ultima pag di prezzi più aggiornata quindi negli helper relativa alla view ho posizionato le varie librerie che andrò a utilizzare in questa funzione e poi ho definito la funzione che mi fa il check della pag e nella view ho richimato semplicemente la funzione e ho associato questa funzione una variabile di seguito ecco il codice:
+
+#pages_helper.rb#
+
+require "open-uri"
+require 'rubygems'
+require 'nokogiri'
+
+	def exists_prezzi_page
+		if Nokogiri::HTML(open("http://www.caat.it/it/listino/#{(Time.now).strftime("%Y-%m-%d")}"))         
+	   		return Nokogiri::HTML(open("http://www.caat.it/it/listino/#{(Time.now).strftime("%Y-%m-%d")}"))
+	   	elsif Nokogiri::HTML(open("http://www.caat.it/it/listino/#{(Time.now-1.days).strftime("%Y-%m-%d")}"))
+	   		return Nokogiri::HTML(open("http://www.caat.it/it/listino/#{(Time.now-1.days).strftime("%Y-%m-%d")}"))
+	   	elsif Nokogiri::HTML(open("http://www.caat.it/it/listino/#{(Time.now-2.days).strftime("%Y-%m-%d")}"))
+	   		return Nokogiri::HTML(open("http://www.caat.it/it/listino/#{(Time.now-2.days).strftime("%Y-%m-%d")}"))
+	   	elsif Nokogiri::HTML(open("http://www.caat.it/it/listino/#{(Time.now-3.days).strftime("%Y-%m-%d")}"))
+	   		return Nokogiri::HTML(open("http://www.caat.it/it/listino/#{(Time.now-3.days).strftime("%Y-%m-%d")}"))
+	   	elsif Nokogiri::HTML(open("http://www.caat.it/it/listino/#{(Time.now-4.days).strftime("%Y-%m-%d")}"))
+	   		return Nokogiri::HTML(open("http://www.caat.it/it/listino/#{(Time.now-4.days).strftime("%Y-%m-%d")}"))
+	   	else 
+	   		return Nokogiri::HTML(open("http://www.caat.it/it/listino/#{(Time.now-5.days).strftime("%Y-%m-%d")}"))
+		end
+	end
+
+#prezzi_mercato_torino.html.erb#
+
+	<% doc=exists_prezzi_page %>
+	<% @righe=doc.css(".views-table")  %>
+	<% @righe.each do |intestazione| %>
+	<table class="table table-condensed">
+	<tr>    
+	<th><%= intestazione.at_css(".views-field-field-specie").text %></th> 
+	<th><%= intestazione.at_css(".views-field-field-varieta").text %></th>
+
+           .....
+IMPORTANTE!!! NON OCCORRE chiudere la funzione <% doc=exists_prezzi_page %> con  <% end %> alla fine
+--------------------------------------------------------------------------------------------------------------
+UN'ALTRO ESEMPIO  per rendere maiuscolo il contenuto di una variabile mettere nell'helper :
+
+def capitalize(string)
+    string.capitalize
+end
+
+
+mentre nella view richiamare la funzione come segue:
+<%= capitalize @user.name %>
+-------------------------------------------------------------------------------------------------------------------------------------
+DATE & TIME
+(Time.now).strftime("%Y-%m-%d")  significa dammi solo la data di oggi senza l'orario converti il risultato di Time.now in una stringa formattata
+  nel seguente formato 2015-03-23 per esempio
+
+se volessi la data di ieri senza l'orario (Time.now-1.days).strftime("%Y-%m-%d")
+se volessi la data di l'altro ieri senza l'orario (Time.now-2.days).strftime("%Y-%m-%d")
+
+
+se invece volessi conoscere solo l'ora e non la data nel formato 18:01:30 scrivere 
+
+Time.now.strftime("%H:%M:%S")
+Da notare: Sia per la Data sia per l'ora i due punti possono essere sostituiti con un simbolo a proprio piacimento
+
+
+---------------------------------------------------------------------------------------------------------------------------																	
+PROBLEMI RISOLTI E CONSIGLI PER L'USO
+
+FOUNDATION
+Attenzione!!! installazione di foundation implichera' la perdita dei dati nelle varie view quindi fare backup
+Se si vuole utilizzare foundation usare il seguente
+
+gem 'foundation-rails', '5.4.3.1'       ATTENZIONE:!!! ALTRE VERS. NON FUNZIONANO
+
+poi dal terminale scrivere:
+
+rails g foundation:install
+
+PROBLEMA RISCONTRATO E RISOLTI:
+
+il logout non funziona questo perchè con Devise 
+
+aprire il file config/initializers/devise.rb
+
+
+# The default HTTP method used to sign out a resource. Default is :delete. Noi dobbiamo passare da :delete a :get
+  config.sign_out_via = :delete       la presente riga CAMBIARLa con la stringa seguente
+  config.sign_out_via = :get
+
+
+
+HIGH_VOLTAGE
+installare la seguente 
+gem 'high_voltage', '~> 2.2.1'
+poi sotto la directory views, creare una directory di nome pages
+app/views/pages
+all'interno di essa creare una pagina statica del tipo home.html.erb
+poi all'interno del percorso config/initializers/
+creare un file high_voltage.rb       all'interno di esso inserire le seguenti stringhe rinchiuse tra #
+###################################
+HighVoltage.configure do |config|
+  config.home_page = 'home'         ATTENZIONE: QUI "home" e' il nome della pagina che abbiamo creato noi nella directory views
+end
+##################################
+
+
+SSH
+per copiare un file da A a B mentre se loggato in A
+scp -P 3022 -r ./helloapp root@www.rubyonrails-apps.com:/
+
+scp sta per secure copy
+-P sta per indicare la porta
+3022 e' la porta
+-r sta per recursive quindi server per copiare ricorsivamente tutti i file all'interno della directory
+./helloapp  indicar il percorso della directory che si intende copiare in questo caso e' helloapp
+root spcecifica che si vuole accedere come utente root
+@ collegati a
+www.rubyonrails-apps.com:   rappresenta l'indirizzo dove si vuole copiare
+/ stiamo specicando come directory di destinazione /  directory radice
+
+
+-----------------------------------------------------------------------------------------------------------------------
+PER BOOTSTRAP
+gem 'twitter-bootstrap-rails', '~> 3.2.0'
+da terminale difgitare
+rails generate bootstrap:install static
+
+
+DOPO BOOTSTRAP INSTALLARE SIMPLE FORM
+gem 'simple_form', '~> 3.1.0'
+rails generate simple_form:install --boostrap
+
+DOPO SIMPLE FORM INSTALLARE DEVISE
+
+gem 'devise'
+
+rails generate devise:install
+rails generate devise user
+rails generate devise:views
+Attenzione!!! aggiungere la seguente linea al file development.rb
+config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+
+-----------------------------------------------------------------------------------
+OGGETTO & SIMBOLO
+
+con la seguente scrittura :x stiamo rappresentando un oggetto; i campi di una tabella,l'email,la password,l'url sono oggetti
+con la seguente scrittura x: stiamo rappresentando un simbolo o per meglio dire stiamo specificando/indicando una caratteristica o per indicare un oggetto in memoria per esempio nel caso di un hash={key: "stringa1",key2:"stringa2"} 
+required: true, created_at: datetime, updated_at: datetime, autofocus: true, label: false, placeholder: "Email",input_html: {class: "form-control"} 
+required,autofocus,label,placeholder,input_html:,class: tutti questi INDICANO una caratteristica
+
+come capire se occorre usare il simbolo o un oggetto?
+
+utilizziamo il simbolo se vogliamo specificare o indicare un percorso o una caratteristica. Ci serviamo dei simboli per trasformare, modificare, creare, cancellare, aggiornare gli oggetti
+
+method: :delete      in questo caso stiamo utilizzando un simbolo e un oggetto, method: e' il simbolo mentre :delete e' l'oggetto
+
+-------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------
+HASH
+
+h = {hashes: "awesome", ruby: "awesome", rails: "awesome"}
+h.each do |key, val|
+	puts "#{key} => #{val}" # prints each key and value.
+end
+
+OPPURE SE ABBIAMO SOLO BISOGNO DI DELLE CHIAVI
+
+h.each_key do |key|
+	puts "#{key}" # prints each key.
+end
+---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
