@@ -1,0 +1,32 @@
+if i want use an automatic completion to reduce writing proceed as follow:
+
+create a file with the words that you desire for istance a file named words with the following path /usr/share/dict/words
+of course you can choose a path whathever you want
+
+then put inside of it the words as follow
+
+Class, Begin,...
+
+or 
+
+Class
+Begin
+...
+
+
+
+after you've created the word's list in your file VIM  where you'll use the list digiting:
+
+:set dictionary=/usr/path/dict/words
+:set complete+=k     #if you want to add the completion
+:set complete-=k     #if you want to remove the completion
+
+that's it now you're ready to use it in your VIM just pressing Ctrl+P
+
+if you want to rend this settings as default in every Vim file that you'll create 
+
+put in /etc/vim/vimrc the following strings
+
+set dictionary=/usr/path/dict/words
+set complete+=k     #if you want to add the completion
+set complete-=k     #if you want to remove the completion
