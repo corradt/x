@@ -44,3 +44,67 @@ edit the file /etc/vim/vimrc by sudo and write
 set number 
 ------------------------------------------------------
 
+HOW TO SETUP the HIGHLIGHT EFFECT ON VIM su tutte le occorrenze di ricerca trovate
+
+edit the file /etc/vim/vimrc by sudo and write
+set hlsearch 
+------------------------------------------------------
+SEARCH BY PATTERN NELLA DIREZIONE FOWARD
+:/parola_che_si_vuole_cercare
+poi con il tasto n/N decidi di fowardare/backwardare tutte le occorrenze delle parole trovate
+----------------------------------------------------------------------------
+SEARCH BY PATTERN NELLA DIREZIONE BACKWARD
+:?parola_che_si_vuole_cercare
+-------------------------------------------------------------------
+SEARCH BY WORD SOTTO IL CURSORE nella direzioe foward
+per ottimizzare i tempi e per evitare di scrivere da  ricercare
+se la parola che vogliamo ricercare (in tutto il file) si trova sotto il nostro cursore
+scrivere
+*
+poi con il tasto n/N decidi di fowardare/backwardare tutte le occorrenze delle parole trovate
+----------------------------------------------------------------------
+SEARCH BY WORD SOTTO IL CURSORE  nella direzione backward
+per ottimizzare i tempi e per evitare di scrivere da  ricercare
+se la parola che vogliamo ricercare (in tutto il file) si trova sotto il nostro cursore
+scrivere
+#
+
+poi con il tasto n/N decidi di fowardare/backwardare tutte le occorrenze delle parole trovate
+---------------------------------------------------------------------
+SEARCH AND REPLACE
+
+:%s/search_for_this/replace_with_this/    - search whole file and replace
+:%s/search_for_this/replace_with_this/c   - confirm each replace	
+
+----------------------------------------------------------------
+HOW TO SELECT TEXT 
+
+V       - selects entire lines 
+v       - selects range of text
+ctrl-v  - selects columns
+gv      - reselect block
+
+After selecting the text, try d to delete, or y to copy, or :s/match/replace/, or :center, or !sort, or...
+
+Here's one way to move selected text over a few spaces:
+
+ - select a chunk of code using capital V and the arrow keys (or j, k)
+ - type colon
+ - then type s/^/   /
+ - hit return
+
+What you've done is replace the beginning of each selected line (the ^ symbol means "the beginning of the line") with spaces.	
+------------------------------------------------------------------------------------------------------------------------------
+HOW TO USE MARKS
+
+Use markers to set places you want to quickly get back to, or to specify a block of text you want to copy or cut.
+ mk      - mark current position (can use a-z)
+ 'k      - move to mark k
+ d'k     - delete from current position to mark k
+ 'a-z    - same file
+ 'A-Z    - beteween files
+
+----------------------------------------------------------------------------
+
+
+
