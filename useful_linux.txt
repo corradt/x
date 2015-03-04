@@ -109,3 +109,10 @@ Macros
  Be- gin recording a macro by pressing qc, where c can
 be any alphabets. This will be the name of the macro.
 Any keys pressed after that will be recorded. End recording a macro by pressing q again. Execute the macro you recorded by @c 
+--------------------------------------------------------------------------------------------------------------------------------
+UNDO, REDO, REPEAT
+premi u per undo una singola parola ma per fare un intera liner premere U
+per fare Redo Ctrl+R
+per ripetere l'ultima azione premere .
+---------------------------------------------------------------------------------------------------
+
