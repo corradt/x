@@ -105,6 +105,7 @@ Use markers to set places you want to quickly get back to, or to specify a block
  'A-Z    - beteween files
 
 ----------------------------------------------------------------------------
-
-
-
+Macros
+ Be- gin recording a macro by pressing qc, where c can
+be any alphabets. This will be the name of the macro.
+Any keys pressed after that will be recorded. End recording a macro by pressing q again. Execute the macro you recorded by @c 
