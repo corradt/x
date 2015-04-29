@@ -790,7 +790,7 @@ and then beacuse I had just replaced sqlite3 with pg, my heroku db wasn't sync s
 		heroku run rake db:migrate
 
 TO DEPLOY BY HEROKU
-if you don't remember the heroku site name that you have chosen in the root directory of your app from terminal digit
+if you don't remember the heroku site name that you have chosen in the root directory of your app from therminal digit
 	cat .git/config
  
 just follow these steps:

@@ -115,4 +115,12 @@ premi u per undo una singola parola ma per fare un intera liner premere U
 per fare Redo Ctrl+R
 per ripetere l'ultima azione premere .
 ---------------------------------------------------------------------------------------------------
+SSH 
+per copiare una directory da locale a un pc remoto:
+scp -P 3122 -r primoS/ root@www.rubyonrails-apps.com:/
+dove con -P 3122 specifichiamo la porta, perche' puo' capitare che il server ospita piu processi, oppure ci siano VM che eseguono apache2
+con -r invece specifichiamo che ricorsivamente dobbiamo il contenuto della cartella primoS/
+con root specifichiamo il nome dell'account a cui abbiamo accesso
+@www.rubyonrails-apps.com:/   rappresenta l'indirizzo dove vogliamo spedire il tutto lo / finale rappresenta la directory root dove andremo a memorizzare tutto
+
 
