@@ -6,6 +6,11 @@ io voglio che questo dominio mi punta al dns di eroku cioè:
  agile-spire-2888.herokuapp.com
 
 
+da terminale digitare:
+
+heroku domains:add www.luvla.org
+
+
 CONFIGURAZIONE DA FARE
 
 +++++++++++++++++++++++++++++++++++++++++++++

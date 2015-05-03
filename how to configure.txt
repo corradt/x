@@ -5,6 +5,7 @@ io voglio che questo dominio mi punta al dns di eroku cioè:
 
  agile-spire-2888.herokuapp.com
 
+mettersi nella root directory della nostra app che vogliamo uploare su heroku e
 
 da terminale digitare:
 
