@@ -1,0 +1,36 @@
+ho acquistato il dominio www.luvla.org   su namecheap
+
+io voglio che questo dominio mi punta al dns di eroku cioè:
+
+
+ agile-spire-2888.herokuapp.com
+
+
+CONFIGURAZIONE DA FARE
+
++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+HOST NAME  			IP ADDRESS/URL 						RECORD TYPE
+
+WWW				agile-spire-2888.herokuapp.com				CNAME (alias)
+@				www.luvla.org						URL redirect
+
+
+
+
+
+in sub-domain settings:
+
+
+@                        v=spf1 include:spf.efwd.registrar-servers.com ~all              txt record
+
+default 		http://free.park-your-domain.com/				url redirect
+
+
+
+
+
+
+
